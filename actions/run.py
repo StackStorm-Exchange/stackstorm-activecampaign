@@ -24,16 +24,24 @@ class ActiveCampaignAction(Action):
             headers=headers, data=params
         )
 
-        results = response.json()
-        if results['result_code'] is not 1:
+        self.logger.debug("status: %s body: %s" % (
+            response.status_code, response.text))
+
+        if response.status_code is not 200:
             failure_reason = (
                 'Failed to perform action. status code: %s; response body: %s' % (
                     response.status_code,
-                    response.json()
+                    response.text
                 )
             )
             self.logger.exception(failure_reason)
             raise Exception(failure_reason)
+
+        results = response.json()
+        if results['result_code'] is not 1:
+            # Error message will also appears in results. Let client handle it.
+            self.logger.error("Active Campaign returned error: %s" % (
+                results['result_message']))
 
         return results
 
