@@ -1,7 +1,7 @@
 import yaml
 import re
 import urllib2
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup  # pylint: disable=import-error
 
 import time
 
