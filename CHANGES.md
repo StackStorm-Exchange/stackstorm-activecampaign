@@ -1,5 +1,9 @@
 # Change Log
 
+# 1.0.0
+
+* Drop Python 2 support
+
 # 0.3.4
 
 * Fixups for Python 3 compatibility
