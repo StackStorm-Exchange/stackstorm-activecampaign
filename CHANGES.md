@@ -1,5 +1,9 @@
 # Change Log
 
+# 1.0.1
+
+* Fixed issue with sensor test where it looks for a file that does not exist.
+
 # 1.0.0
 
 * Drop Python 2 support
